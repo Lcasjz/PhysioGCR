@@ -1,0 +1,28 @@
+{
+  "sleep_edf": {
+    "task": "five-stage sleep staging",
+    "classes": ["Wake", "N1", "N2", "N3", "REM"],
+    "input": "30 s at 100 Hz; EEG Fpz-Cz, EEG Pz-Oz, EOG horizontal",
+    "groups": ["EEG1", "EEG2", "EOG"],
+    "split": "subject-disjoint 70/15/15 generated with seed 0"
+  },
+  "pamap2": {
+    "task": "12-class activity recognition",
+    "input": "24 x 52 windows with stride 12",
+    "groups": ["heart_rate", "hand", "chest", "ankle"],
+    "fixed_split": {
+      "train": [101, 102, 103, 104, 106, 107],
+      "validation": [105],
+      "test": [108],
+      "excluded_from_fixed_split": [109]
+    },
+    "secondary_protocol": "LOSO with the next sorted subject fixed for validation"
+  },
+  "wesad": {
+    "task": "baseline/stress/amusement recognition",
+    "input": "label-pure one-second Resp, BVP, ECG, and EDA streams in public Husformer geometry",
+    "groups": ["Resp", "BVP", "ECG", "EDA"],
+    "split": "LOSO test subject; next sorted subject validation; remaining subjects training"
+  },
+  "metrics": ["accuracy", "balanced_accuracy", "macro_f1", "cohen_kappa", "per_class_f1", "confusion_matrix"]
+}

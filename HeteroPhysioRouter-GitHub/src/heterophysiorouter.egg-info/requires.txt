@@ -1,0 +1,11 @@
+h5py>=3.8
+numpy>=1.23
+scikit-learn>=1.2
+scipy>=1.10
+torch>=2.1
+
+[dev]
+pytest>=7.4
+
+[sleep]
+mne>=1.5
